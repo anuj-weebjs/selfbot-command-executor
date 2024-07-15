@@ -3,6 +3,16 @@ const axios = require('axios');
 const WebSocket = require('ws');
 const fs = require('fs');
 const crypto = require('crypto');
+const express = require('express');
+const port = process.env.PORT || 4000;
+const app = express();
+
+// Keep alive
+
+app.get("/", (req, res) =>{
+    res.send("running asf");
+})
+app.listen(port);
 
 function color(message, colorCode) {
     return `\x1b[37m[\x1b[0m\x1b[${colorCode}m${message}\x1b[0m\x1b[37m]\x1b[0m`;
