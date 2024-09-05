@@ -11,7 +11,8 @@ const app = express();
 
 app.get("/", (req, res) =>{
     res.send("running asf");
-})
+});
+
 app.listen(port);
 
 function color(message, colorCode) {
@@ -160,3 +161,4 @@ async function runBot() {
         await runBot();
     }
 })();
+
