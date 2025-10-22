@@ -11,8 +11,7 @@ const app = express();
 
 app.get("/", (req, res) =>{
     res.send("running asf");
-});
-
+})
 app.listen(port);
 
 function color(message, colorCode) {
@@ -116,7 +115,7 @@ function parseCommand(commandString) {
 async function runBot() {
     try {
         const userInfo = await axios.get('https://discord.com/api/v9/users/@me', { headers: { 'Authorization': process.env.TOKEN } });
-        console.log(color2(`Made by anuj-weebjs`, '35'));
+        console.log(color2(`Made by coreqt`, '35'));
         console.log(color2(`You have been logged in as ${userInfo.data.username} (${userInfo.data.id})`, '37'));
 
         try {
@@ -155,10 +154,13 @@ async function runBot() {
     if (process.env.LOOP === 'loop') {
         for (;;) {
             await runBot();
-            await new Promise(resolve => setTimeout(resolve, process.env.WAIT_TIME));
+            await new Promise(resolve => setTimeout(resolve, random(1200000, 2400000)));
         }
     } else {
         await runBot();
     }
 })();
 
+function random(min,max) {
+    return Math.floor((Math.random())*(max-min+1))+min;
+   }
